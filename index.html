@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guía Río</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAMAAAAKE/YAAAAAYFBMVEW65v394EcOhZMNgZINfpEMe5AMeY8Md48LdI4Lc40Lco0Kb4wKbowKbYsKa4sJaooDaaEJaYoJZ4kJZokJZYkIZIgIY4gIYogIYYcIX4cHXoYHXYYHXIYHW4UHWYUGTjtL3eaeAAACqklEQVR42u3V2XLbMBBE0WY2K/u+L/3/f5lKIieWCYLEzHAIxH0fbQN9Sq4S8GPAIHQW+vuACS200D2gvw2Y0GnorwMmdBr6y4AJnYb+PGBCp6E/DZjQQgvdA/rjgAmdhv4wYEKnod8PmNBp6HcDJnQa+u2ACZ2GfjNg+6Cnvw2CnmbFo1+HNi0Uu4IMcjQbSeZQNZLIoWzkmePUSDSHqfEypGljMWtINQepkWuOUeOFv6mpgEFkmyPUdxQ9Telq5Jv96jHRz31NppyjQqehn7majPlWhU5DP3VlRftWcYjZqRZa6P8O/cSTHe2aFVpooUPUvlU8dmVF+1aFTkOffNnMztFj0RwQTfIQ9MlnHg5NWtVu9MlnNqlx5a7VfD52jTYsHoYm7eoA9JXPbFC70WxUz83tai/6z6TPnI2+3nSZm9XwmxvUC+ZWNQLMm9WL5kT05ajH3KjGI3MXo79+UCcXj11esDXEmNfVK+YcdHl1jbxoblLjoa3C6vk3c3H92O3zG0KY+eZqEbxi3h1tnCVj1Ag0r82SQWpEmuuzPBJt3CXD1Ig1V4YZp0a0eWmYjFMj3FweZij6QVPblq3nymfnYQfzfJkMVWMP8+1lHoi2TpPBauxjvjlNRquxk/nfNA9Em7cZr8Zu5vM2Ga/Gfubf29wFfX9LNGY/WA17mh250WRnanRqdqLJ7tTo1VxTo1uzHU32qEa/5mU17lU62MwlFzo2L6rRs3lJja7NrWiyXzX6NpfV6NzcgCa7VqN3c0mN7s0FNfo3b0GT3asxgHmmxgjmGfrVgAkt9J1Fo1bLYMA9cEw0zEbds4Zu+gwqfxx1zyra8G8vHo26ZwvaNnN5Q+Q9+soTWmg9Lnpc9LjocRFaaD0uelz0uOhx0Vee0EILLbTQQgtd6yds8y9IuPsDnAAAAABJRU5ErkJggg==">
+<meta name="theme-color" content="#0c4a6e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Río">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>
+:root{
+  --bg:#082f49; --bg2:#0c4a6e; --card:rgba(255,255,255,.09); --card-b:rgba(255,255,255,.14);
+  --txt:#f0f9ff; --mut:#bae6fd; --acc:#fde047; --ok:#86efac; --warn:#fca5a5;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;-webkit-text-size-adjust:100%}
+body{min-height:100vh;background:linear-gradient(180deg,var(--bg2) 0%,var(--bg) 60%) fixed;
+  padding:calc(env(safe-area-inset-top) + 12px) 16px calc(env(safe-area-inset-bottom) + 84px)}
+header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+h1{font-size:22px;margin:0;letter-spacing:.2px}
+.sub{font-size:13px;color:var(--mut)}
+.pill{font-size:12px;padding:4px 10px;border-radius:99px;background:var(--card);border:1px solid var(--card-b)}
+.pill.on{color:var(--ok)} .pill.off{color:var(--warn)}
+section.tab{display:none} section.tab.active{display:block}
+.card{background:var(--card);border:1px solid var(--card-b);border-radius:18px;padding:16px;margin-bottom:14px}
+.card h2{font-size:16px;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+.card h3{font-size:14px;margin:14px 0 6px;color:var(--acc)}
+.note{font-size:12px;color:var(--mut);margin-top:8px;line-height:1.4}
+.stale{color:var(--warn)}
+/* calculadora */
+.cur{display:grid;grid-template-columns:64px 1fr;align-items:center;gap:10px;margin-bottom:10px}
+.cur label{font-weight:700;font-size:15px}
+.cur label small{display:block;font-weight:400;color:var(--mut);font-size:11px}
+.cur input{width:100%;font-size:24px;padding:12px 14px;border-radius:14px;border:1px solid var(--card-b);background:rgba(0,0,0,.25);color:var(--txt);font-variant-numeric:tabular-nums;outline:none}
+.cur input:focus{border-color:var(--acc)}
+table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+td,th{padding:7px 4px;border-bottom:1px solid var(--card-b);text-align:left}
+th{color:var(--mut);font-weight:600;font-size:12px}
+td:last-child,th:last-child{text-align:right}
+/* clima */
+.days{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.day{background:rgba(0,0,0,.2);border-radius:14px;padding:12px;text-align:center}
+.day .d{font-size:13px;color:var(--mut);text-transform:capitalize}
+.day .i{font-size:34px;line-height:1.2}
+.day .t{font-size:18px;font-weight:700}
+.day .t span{color:var(--mut);font-weight:400}
+.day .m{font-size:12px;color:var(--mut);margin-top:4px;line-height:1.5}
+/* listas */
+ul{margin:0;padding-left:18px;line-height:1.55;font-size:14.5px}
+li{margin-bottom:6px}
+.row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--card-b);font-size:14.5px}
+.row:last-child{border-bottom:0}
+.row b{color:var(--acc);white-space:nowrap}
+.sos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.sos a{display:block;text-align:center;text-decoration:none;color:var(--txt);background:rgba(220,38,38,.35);border:1px solid rgba(252,165,165,.5);border-radius:14px;padding:12px 4px;font-size:12px}
+.sos a b{display:block;font-size:26px}
+.ph{display:grid;grid-template-columns:1fr;gap:0}
+.ph div{padding:9px 0;border-bottom:1px solid var(--card-b)}
+.ph div:last-child{border-bottom:0}
+.ph .pt{font-size:16px;font-weight:600}
+.ph .es{font-size:13px;color:var(--mut)}
+.ph .pr{font-size:12px;color:var(--acc)}
+.flight{display:flex;align-items:center;justify-content:space-between;margin:6px 0 10px}
+.flight .c{font-size:26px;font-weight:800}
+.flight .h{font-size:20px}
+.flight .a{font-size:22px;color:var(--mut)}
+.pend{color:var(--mut);font-style:italic}
+/* nav */
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:rgba(8,47,73,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-top:1px solid var(--card-b);padding:6px 6px calc(env(safe-area-inset-bottom) + 6px)}
+nav button{flex:1;background:none;border:0;color:var(--mut);font-size:11px;padding:6px 0;display:flex;flex-direction:column;align-items:center;gap:2px}
+nav button span{font-size:22px}
+nav button.active{color:var(--acc)}
+button.upd{background:var(--acc);color:#1c1917;border:0;border-radius:12px;padding:9px 14px;font-weight:700;font-size:13px}
+</style>
+</head>
+<body>
+<header>
+  <div><h1>🌴 Río de Janeiro</h1><div class="sub" id="hdrSub">Guía de viaje</div></div>
+  <span class="pill" id="net">…</span>
+</header>
+
+<!-- ============ INICIO ============ -->
+<section class="tab active" id="tab-inicio">
+
+  <div class="card">
+    <h2>💱 Calculadora de monedas</h2>
+    <div class="cur"><label>CLP<small>Peso chileno</small></label><input id="clp" inputmode="numeric" placeholder="0" autocomplete="off"></div>
+    <div class="cur"><label>USD<small>Dólar</small></label><input id="usd" inputmode="decimal" placeholder="0" autocomplete="off"></div>
+    <div class="cur"><label>BRL<small>Real (R$)</small></label><input id="brl" inputmode="decimal" placeholder="0" autocomplete="off"></div>
+    <div class="note" id="rateInfo"></div>
+  </div>
+
+  <div class="card">
+    <h2>🧾 Referencia rápida</h2>
+    <table id="quick"></table>
+    <div class="note">Tipo de cambio de mercado. En casas de cambio y con tarjeta (comisión del banco) el valor real será algo distinto.</div>
+  </div>
+
+  <div class="card">
+    <h2>⛅ Clima en Río</h2>
+    <div class="days" id="days"><div class="note">Sin datos aún. Abre la app con internet para descargar el pronóstico.</div></div>
+    <div class="note" id="wxInfo"></div>
+  </div>
+
+  <div style="text-align:center;margin-bottom:10px"><button class="upd" id="btnUpd">🔄 Actualizar ahora</button></div>
+</section>
+
+<!-- ============ VIAJE ============ -->
+<section class="tab" id="tab-viaje">
+  <div class="card">
+    <h2>✈️ Ida · LATAM LA780</h2>
+    <div class="sub">Jueves 26 nov 2026</div>
+    <div class="flight">
+      <div><div class="c">SCL</div><div class="h">12:35</div></div>
+      <div class="a">✈ ────</div>
+      <div style="text-align:right"><div class="c">GIG</div><div class="h">16:50</div></div>
+    </div>
+    <div class="row"><span>Embarque</span><b>11:45 (cierra 12:05)</b></div>
+    <div class="row"><span>Terminal</span><b>2 (confirmar puerta en pantallas)</b></div>
+    <div class="row"><span>Asiento</span><b>27C · Economy</b></div>
+    <div class="row"><span>Grupo de embarque</span><b>6</b></div>
+    <div class="row"><span>Equipaje</span><b>Solo 1 bolso bajo el asiento (45×35×20 cm)</b></div>
+    <div class="note">Los horarios son locales. Hoy Chile y Río tienen la misma hora, así que no hay que cambiar el reloj. El código de reserva y el pase de abordar están en la app de LATAM / Wallet.</div>
+  </div>
+
+  <div class="card">
+    <h2>🔁 Vuelta</h2>
+    <div class="pend">Pendiente: se agregará cuando tengamos los datos.</div>
+  </div>
+
+  <div class="card">
+    <h2>🏨 Alojamiento</h2>
+    <div class="pend">Pendiente: nombre, dirección y teléfono.</div>
+  </div>
+</section>
+
+<!-- ============ RÍO ============ -->
+<section class="tab" id="tab-rio">
+  <div class="card">
+    <h2>🌎 Datos interesantes</h2>
+    <ul>
+      <li><b>Cristo Redentor:</b> mide 30 m (38 m con el pedestal) y está sobre el Corcovado, a 710 m. Se inauguró en 1931 y es una de las Nuevas 7 Maravillas del Mundo (2007).</li>
+      <li><b>Pão de Açúcar:</b> el morro mide 396 m. Su teleférico funciona desde 1912, uno de los primeros del mundo.</li>
+      <li><b>Bosque de Tijuca:</b> uno de los bosques urbanos más grandes del mundo, dentro de la ciudad, replantado a mano en el siglo XIX.</li>
+      <li><b>Capital:</b> Río fue capital de Brasil hasta 1960, cuando se trasladó a Brasilia.</li>
+      <li><b>Patrimonio UNESCO:</b> en 2012 la ciudad fue declarada Paisaje Cultural, por la mezcla de mar, montaña y ciudad.</li>
+      <li><b>Copacabana:</b> la playa mide unos 4 km. Ipanema y Leblon siguen hacia el sur; la puesta de sol en el Arpoador es un clásico.</li>
+      <li><b>Escadaria Selarón:</b> 215 escalones cubiertos de azulejos de decenas de países, obra del artista chileno Jorge Selarón.</li>
+      <li><b>Maracanã:</b> uno de los estadios más famosos del mundo; ha sido sede de dos finales de Copa del Mundo (1950 y 2014).</li>
+      <li><b>Caipirinha:</b> el trago nacional se prepara con cachaça, lima y azúcar.</li>
+      <li><b>Cariocas:</b> así se llama a los habitantes de Río. Se dice que el nombre viene del tupí «casa del blanco».</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>📍 Lugares clásicos</h2>
+    <ul>
+      <li>Cristo Redentor (tren del Corcovado o van; reservar horario).</li>
+      <li>Pão de Açúcar (mejor al atardecer).</li>
+      <li>Playas de Copacabana, Ipanema y Arpoador.</li>
+      <li>Santa Teresa y los Arcos de Lapa, con la Escadaria Selarón.</li>
+      <li>Jardín Botánico y Parque Lage.</li>
+      <li>Centro histórico, Museo del Mañana y Boulevard Olímpico.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>🗣️ Frases en portugués</h2>
+    <div class="ph">
+      <div><div class="pt">Olá / Oi</div><div class="es">Hola</div></div>
+      <div><div class="pt">Bom dia · Boa tarde · Boa noite</div><div class="es">Buenos días · Buenas tardes · Buenas noches</div></div>
+      <div><div class="pt">Obrigada</div><div class="es">Gracias (lo dice una mujer; el hombre dice «obrigado»)</div></div>
+      <div><div class="pt">Por favor · De nada</div><div class="es">Por favor · De nada</div></div>
+      <div><div class="pt">Quanto custa?</div><div class="es">¿Cuánto cuesta?</div><div class="pr">«cuánto cús-ta»</div></div>
+      <div><div class="pt">A conta, por favor</div><div class="es">La cuenta, por favor</div></div>
+      <div><div class="pt">Onde fica o banheiro?</div><div class="es">¿Dónde está el baño?</div><div class="pr">«ónde fica u ba-ñéiro»</div></div>
+      <div><div class="pt">Não entendo / Fala mais devagar</div><div class="es">No entiendo / Habla más despacio</div></div>
+      <div><div class="pt">Você fala espanhol?</div><div class="es">¿Habla español?</div></div>
+      <div><div class="pt">Preciso de ajuda</div><div class="es">Necesito ayuda</div></div>
+      <div><div class="pt">Sem gelo, por favor</div><div class="es">Sin hielo, por favor</div></div>
+      <div><div class="pt">Água sem gás / com gás</div><div class="es">Agua sin gas / con gas</div></div>
+      <div><div class="pt">Tudo bem?</div><div class="es">¿Todo bien? (saludo habitual; se responde «tudo bem!»)</div></div>
+    </div>
+    <div class="note">Brasileños y chilenos se entienden bastante despacio y con gestos. La «r» inicial suena como «j» (Rio ≈ «jío»), y «de» y «te» suelen sonar «dyi» y «tchi».</div>
+  </div>
+</section>
+
+<!-- ============ ÚTIL ============ -->
+<section class="tab" id="tab-util">
+  <div class="card">
+    <h2>🚨 Emergencias en Brasil</h2>
+    <div class="sos">
+      <a href="tel:190"><b>190</b>Policía</a>
+      <a href="tel:192"><b>192</b>Ambulancia (SAMU)</a>
+      <a href="tel:193"><b>193</b>Bomberos</a>
+    </div>
+    <div class="note">Existe una comisaría especializada en turistas (DEAT) en Leblon. Si algo pasa, avísale a la recepción del hotel primero.</div>
+  </div>
+
+  <div class="card">
+    <h2>🔌 Electricidad y hora</h2>
+    <div class="row"><span>Enchufe</span><b>Tipo N (también C)</b></div>
+    <div class="row"><span>Voltaje</span><b>127 V en Río (algunos lugares 220 V)</b></div>
+    <div class="row"><span>Hora</span><b>Igual que Chile (UTC-3)</b></div>
+    <div class="note">Los cargadores de celular y notebook suelen aceptar 100–240 V, solo revisa la etiqueta. Los de 2 clavijas redondas chilenas normalmente calzan; si no, lleva un adaptador universal.</div>
+  </div>
+
+  <div class="card">
+    <h2>🛡️ Consejos de seguridad</h2>
+    <ul>
+      <li>No muestres el celular en la calle ni en la playa; sácalo, úsalo rápido y guárdalo.</li>
+      <li>Evita joyas llamativas y no dejes objetos sobre la arena ni sobre la mesa en terrazas.</li>
+      <li>Para moverte de noche, usa Uber o 99 en vez de caminar. Verifica la patente antes de subir.</li>
+      <li>Lleva solo lo necesario: una tarjeta y algo de efectivo; deja pasaporte y el resto en la caja fuerte (lleva copia digital).</li>
+      <li>Evita zonas poco concurridas y no entres a favelas sin un tour oficial.</li>
+      <li>Si te roban, no te resistas: entrega lo que piden.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>💳 Dinero y transporte</h2>
+    <ul>
+      <li>Se paga con tarjeta casi en todas partes (también con tap, «aproximação»). Avisa a tu banco que viajas.</li>
+      <li>Pix (pago instantáneo) requiere cuenta brasileña, así que usa tarjeta o efectivo.</li>
+      <li>En restaurantes suele venir un 10 % de servicio incluido en la cuenta («serviço»). Pregunta si ya está sumado.</li>
+      <li>Uber y 99 funcionan muy bien. El metro es seguro, barato y llega a Copacabana e Ipanema.</li>
+      <li>Hace mucho sol: protector solar, sombrero y agua. Mejor tomar agua embotellada.</li>
+      <li>En noviembre es verano: calor húmedo (25–35 °C) y chubascos por la tarde. Lleva un impermeable ligero.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>📴 Antes de quedarte sin internet</h2>
+    <ul>
+      <li>Descarga el mapa de Río en Google Maps (Mapas sin conexión) mientras tengas wifi.</li>
+      <li>Guarda captura del pase de abordar, hotel y reservas.</li>
+      <li>Esta app funciona sin conexión; se actualiza sola cuando la abras con wifi o datos.</li>
+    </ul>
+  </div>
+</section>
+
+<nav>
+  <button class="active" data-tab="inicio"><span>🏠</span>Inicio</button>
+  <button data-tab="viaje"><span>✈️</span>Viaje</button>
+  <button data-tab="rio"><span>🌴</span>Río</button>
+  <button data-tab="util"><span>🧰</span>Útil</button>
+</nav>
+
+<script>
+/* ---------- helpers ---------- */
+const $ = id => document.getElementById(id);
+const LS = {
+  get(k){ try{ return JSON.parse(localStorage.getItem(k)); }catch(e){ return null; } },
+  set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+};
+const fmt = (n, d=0) => new Intl.NumberFormat('es-CL',{minimumFractionDigits:d,maximumFractionDigits:d}).format(n);
+const ago = ts => {
+  const m = Math.round((Date.now()-ts)/60000);
+  if (m < 1) return 'hace un momento';
+  if (m < 60) return `hace ${m} min`;
+  const h = Math.round(m/60);
+  if (h < 24) return `hace ${h} h`;
+  const d = Math.round(h/24);
+  return `hace ${d} día${d>1?'s':''}`;
+};
+const stamp = ts => new Date(ts).toLocaleString('es-CL',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('nav button').forEach(b=>{
+  b.onclick = () => {
+    document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('active', x===b));
+    document.querySelectorAll('section.tab').forEach(s=>s.classList.toggle('active', s.id==='tab-'+b.dataset.tab));
+    window.scrollTo(0,0);
+    LS.set('tab', b.dataset.tab);
+  };
+});
+const savedTab = LS.get('tab');
+if (savedTab){ const b=document.querySelector(`nav button[data-tab="${savedTab}"]`); if(b) b.click(); }
+
+/* ---------- estado de red ---------- */
+function updNet(){
+  const p = $('net');
+  p.textContent = navigator.onLine ? '● En línea' : '● Sin conexión';
+  p.className = 'pill ' + (navigator.onLine ? 'on' : 'off');
+}
+addEventListener('online', ()=>{ updNet(); refreshAll(); });
+addEventListener('offline', updNet);
+updNet();
+
+/* ---------- monedas ---------- */
+// Referencial (solo si nunca se ha descargado nada). Valores por 1 USD.
+const FALLBACK = { CLP: 950, BRL: 5.4, ts: 0, approx: true };
+let rates = LS.get('rates') || FALLBACK;
+
+function parseNum(s, isInt){
+  s = (s||'').replace(/\s/g,'');
+  if (isInt) return parseFloat(s.replace(/[^\d]/g,'')) || 0;
+  if (s.includes(',')) s = s.replace(/\./g,'').replace(',','.');
+  else if (/\.\d{3}(?!\d)/.test(s) && (s.match(/\./g)||[]).length>1) s = s.replace(/\./g,'');
+  return parseFloat(s) || 0;
+}
+rates.USD = 1;
+function convertFrom(code, v){
+  const usd = v / (rates[code] || 1);
+  return { CLP: usd*rates.CLP, USD: usd, BRL: usd*rates.BRL };
+}
+let editing = null;
+function renderCalc(src){
+  const el = {clp:$('clp'), usd:$('usd'), brl:$('brl')};
+  const code = src.toUpperCase();
+  const v = parseNum(el[src].value, code==='CLP');
+  if (!el[src].value.trim()){ Object.values(el).forEach(e=>{ if(e!==el[src]) e.value=''; }); return; }
+  const r = convertFrom(code, v);
+  if (src!=='clp') el.clp.value = fmt(r.CLP,0);
+  if (src!=='usd') el.usd.value = fmt(r.USD,2);
+  if (src!=='brl') el.brl.value = fmt(r.BRL,2);
+}
+['clp','usd','brl'].forEach(id=>{
+  $(id).addEventListener('input', ()=>renderCalc(id));
+  $(id).addEventListener('focus', e=>e.target.select());
+});
+function renderRates(){
+  rates.USD = 1;
+  const clpPerBrl = rates.CLP / rates.BRL;
+  const info = $('rateInfo');
+  let t = `1 USD = ${fmt(rates.CLP,0)} CLP · 1 USD = ${fmt(rates.BRL,2)} BRL · 1 R$ = ${fmt(clpPerBrl,0)} CLP<br>`;
+  if (rates.approx || !rates.ts) t += '<span class="stale">⚠️ Valores referenciales: aún no se ha descargado el tipo de cambio real. Abre la app con internet.</span>';
+  else t += `Actualizado ${stamp(rates.ts)} (${ago(rates.ts)})`;
+  info.innerHTML = t;
+  const rows = [10,20,50,100,200,500].map(n=>`<tr><td>R$ ${n}</td><td>≈ ${fmt(n*clpPerBrl,0)} CLP</td><td>≈ US$ ${fmt(n/rates.BRL,2)}</td></tr>`).join('');
+  $('quick').innerHTML = '<tr><th>Reales</th><th>Pesos chilenos</th><th>Dólares</th></tr>' + rows;
+  const act = ['clp','usd','brl'].find(id=>$(id).value.trim());
+  if (act) renderCalc(act);
+}
+async function fetchRates(){
+  const r = await fetch('https://open.er-api.com/v6/latest/USD', {cache:'no-store'});
+  if (!r.ok) throw new Error('rates');
+  const j = await r.json();
+  if (!j.rates || !j.rates.CLP || !j.rates.BRL) throw new Error('rates');
+  rates = { CLP: j.rates.CLP, BRL: j.rates.BRL, USD: 1, ts: Date.now() };
+  LS.set('rates', rates);
+  renderRates();
+}
+
+/* ---------- clima ---------- */
+const WMO = c => {
+  if (c===0) return ['☀️','Despejado'];
+  if (c<=2) return ['🌤️','Poco nublado'];
+  if (c===3) return ['☁️','Nublado'];
+  if (c<=48) return ['🌫️','Neblina'];
+  if (c<=57) return ['🌦️','Llovizna'];
+  if (c<=67) return ['🌧️','Lluvia'];
+  if (c<=77) return ['🌨️','Nieve'];
+  if (c<=82) return ['🌦️','Chubascos'];
+  if (c<=86) return ['🌨️','Nieve'];
+  return ['⛈️','Tormenta'];
+};
+function renderWx(){
+  const w = LS.get('wx');
+  const box = $('days');
+  if (!w || !w.daily) return;
+  const d = w.daily;
+  const today = new Date(); const ymd = today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
+  let idx = d.time.map((t,i)=>i).filter(i=>d.time[i] >= ymd);
+  if (!idx.length) idx = d.time.map((t,i)=>i);
+  idx = idx.slice(0,4);
+  box.innerHTML = idx.map(i=>{
+    const [ic, tx] = WMO(d.weather_code[i]);
+    const dt = new Date(d.time[i]+'T12:00:00');
+    const name = dt.toLocaleDateString('es-CL',{weekday:'short',day:'numeric',month:'short'});
+    return `<div class="day"><div class="d">${name}</div><div class="i">${ic}</div>
+      <div class="t">${Math.round(d.temperature_2m_max[i])}° <span>/ ${Math.round(d.temperature_2m_min[i])}°</span></div>
+      <div class="m">${tx}<br>🌧 ${d.precipitation_probability_max[i] ?? '–'}% · 💨 ${Math.round(d.wind_speed_10m_max[i])} km/h<br>UV ${Math.round(d.uv_index_max[i] ?? 0)}</div></div>`;
+  }).join('');
+  $('wxInfo').innerHTML = `Pronóstico actualizado ${stamp(w.ts)} (${ago(w.ts)}).` +
+    (Date.now()-w.ts > 36*3600*1000 ? ' <span class="stale">Puede estar desactualizado; conéctate para renovarlo.</span>' : '');
+}
+async function fetchWx(){
+  const u = 'https://api.open-meteo.com/v1/forecast?latitude=-22.9068&longitude=-43.1729'
+    + '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max,uv_index_max'
+    + '&timezone=America%2FSao_Paulo&forecast_days=7';
+  const r = await fetch(u, {cache:'no-store'});
+  if (!r.ok) throw new Error('wx');
+  const j = await r.json();
+  if (!j.daily) throw new Error('wx');
+  LS.set('wx', { daily: j.daily, ts: Date.now() });
+  renderWx();
+}
+
+/* ---------- actualización ---------- */
+async function refreshAll(btn){
+  if (!navigator.onLine){ if(btn) alert('Sin conexión. Se actualizará solo cuando haya internet.'); return; }
+  if (btn) btn.textContent = '⏳ Actualizando…';
+  const res = await Promise.allSettled([fetchRates(), fetchWx()]);
+  if (btn){
+    btn.textContent = res.every(r=>r.status==='fulfilled') ? '✅ Actualizado' : '⚠️ Actualización parcial';
+    setTimeout(()=>btn.textContent='🔄 Actualizar ahora', 2500);
+  }
+}
+$('btnUpd').onclick = e => refreshAll(e.target);
+document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) refreshAll(); });
+
+/* ---------- inicio ---------- */
+renderRates(); renderWx(); refreshAll();
+
+/* ---------- service worker ---------- */
+if ('serviceWorker' in navigator){
+  addEventListener('load', ()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+}
+</script>
+</body>
+</html>
