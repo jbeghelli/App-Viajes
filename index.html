@@ -3,30 +3,41 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Guía Río</title>
+<title>Maki en Río</title>
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAMAAAAKE/YAAAAAYFBMVEW65v394EcOhZMNgZINfpEMe5AMeY8Md48LdI4Lc40Lco0Kb4wKbowKbYsKa4sJaooDaaEJaYoJZ4kJZokJZYkIZIgIY4gIYogIYYcIX4cHXoYHXYYHXIYHW4UHWYUGTjtL3eaeAAACqklEQVR42u3V2XLbMBBE0WY2K/u+L/3/f5lKIieWCYLEzHAIxH0fbQN9Sq4S8GPAIHQW+vuACS200D2gvw2Y0GnorwMmdBr6y4AJnYb+PGBCp6E/DZjQQgvdA/rjgAmdhv4wYEKnod8PmNBp6HcDJnQa+u2ACZ2GfjNg+6Cnvw2CnmbFo1+HNi0Uu4IMcjQbSeZQNZLIoWzkmePUSDSHqfEypGljMWtINQepkWuOUeOFv6mpgEFkmyPUdxQ9Telq5Jv96jHRz31NppyjQqehn7majPlWhU5DP3VlRftWcYjZqRZa6P8O/cSTHe2aFVpooUPUvlU8dmVF+1aFTkOffNnMztFj0RwQTfIQ9MlnHg5NWtVu9MlnNqlx5a7VfD52jTYsHoYm7eoA9JXPbFC70WxUz83tai/6z6TPnI2+3nSZm9XwmxvUC+ZWNQLMm9WL5kT05ajH3KjGI3MXo79+UCcXj11esDXEmNfVK+YcdHl1jbxoblLjoa3C6vk3c3H92O3zG0KY+eZqEbxi3h1tnCVj1Ag0r82SQWpEmuuzPBJt3CXD1Ig1V4YZp0a0eWmYjFMj3FweZij6QVPblq3nymfnYQfzfJkMVWMP8+1lHoi2TpPBauxjvjlNRquxk/nfNA9Em7cZr8Zu5vM2Ga/Gfubf29wFfX9LNGY/WA17mh250WRnanRqdqLJ7tTo1VxTo1uzHU32qEa/5mU17lU62MwlFzo2L6rRs3lJja7NrWiyXzX6NpfV6NzcgCa7VqN3c0mN7s0FNfo3b0GT3asxgHmmxgjmGfrVgAkt9J1Fo1bLYMA9cEw0zEbds4Zu+gwqfxx1zyra8G8vHo26ZwvaNnN5Q+Q9+soTWmg9Lnpc9LjocRFaaD0uelz0uOhx0Vee0EILLbTQQgtd6yds8y9IuPsDnAAAAABJRU5ErkJggg==">
-<meta name="theme-color" content="#0c4a6e">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAMAAAAKE/YAAAAAYFBMVEX98vj8002NHGWLHGWIHGWHHGaGHGaEHGaDHGaZG2OXG2OVG2OSG2SPG2SlGmGiGmGgGmGeGmKdGmKbGmK9GF27GF26GF24GF23GF61GF60GF6xGV+wGV+tGV+qGWCnGWDu1ccoAAADwElEQVR42u3ba1viMBAF4JllbwrsWtirKP7/f7mRXaG0aZrMnCTNMueDIm3OvOapPKJA3xoMGdrQhja0DP29wRi6GPpHgzG0oQ29BPTPBmPoYuhfDcbQyLChC5kVaKqHDqjpdzAzh7PFmVmqIiJDJ5A54KbHQJw5eDwYN1O6rh+va3HoszzgmjFL1dPbtFw0E7mxJGcL0XSJxHxCu49i9GMymgZJN5PbZ5Krw+iDJ+TLITp/sa8Xx+nGQZTQskmLEOymnagXtFAtQp/dqcP+fZ8XtPt8wAaN7pnprCYuhz7IzQM0WI1Fn5FDNFZNT6G4aU/x4YH5Wv2ECxDNvYebMdrdLoaWmX1o4GaT6vCUmXjwGatGoQc6Ht6AqgnSMrBNokFqegaEh7+nTKLdHYB5lNXsURMvAs2pMTTs8ghc00u5PNpEpzx60FIePdpET6rzmJ/piEgCGjEOgz5yJBpivmm0X53JbOjm0D51LvONo488i0aZj/SCSgQaNQqHHqtzmW8e/cJBNM5862geKMdfLu0HMfpJ7XLQSc/FEegv6iT/CUE9kcqb9WoqT9azqYpZqaYc5uRzCqLjMWA2Qc2ws2fQX6UZGTKsmAihzPkW4dDC8Rg1QcxFVmrRmskANQBdePUr+kGQq6kV1lOFmeoGqmHWdijRDw8AdQE0xKyroUpmVRF1ienP6jRRFFEts6ZKge46nDormjOhuRC666pttRjddVB1GnqXkt7W7BAR9knRux1YnQ3NGdEpjbRPSG/EHhNZoxC938PVhs55dQg7qe5Gy0oNbegQ+i46l/o7ZAS1hjZ0u2gydBk0kddH99G5tN8jE6p1aN8SQ6PRpxeK+NDr6Fza18gEak9oz5LlonuvymkEPXr7gxSdRz1ZKtlpro2WXNMtonkJ6LXfHEBzoJ8zmPVof0lW9DoBvfHkrWfq/vERcWYqKfbeq39MTh2Bm5Xot7L0EXj0Ro/eZERv9OjNHJorbnQADdwZ8EZPojeM3BrsRivQjDSD0ODNgXbRNi393dnqIq+ibS21oug20Ci1poa2ddSqEiWaAeYiaIBa2UAVZqrX0ztJrqYWXu0CQCcO1qxVoRWTAWYpejib8y4DoWXjMWY5egTgDCvg6Heed67Azp5Br+Txvk9IeWZUNOgJzIATc05R9Er8LrlVRfSqhlmNFrG1I/XoVXHzit4DkkQGzIOgE9iQaSB0nBs1CoeeZeMGIdEBOHYIGj2WZ+inDw3G0MXQHxuMoQ1t6CWgPzUYQxdDf24whjb0/4b+A/QUR27cZH6TAAAAAElFTkSuQmCC">
+<meta name="theme-color" content="#831843">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Río">
+<meta name="apple-mobile-web-app-title" content="Maki en Río">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <style>
 :root{
-  --bg:#082f49; --bg2:#0c4a6e; --card:rgba(255,255,255,.09); --card-b:rgba(255,255,255,.14);
-  --txt:#f0f9ff; --mut:#bae6fd; --acc:#fde047; --ok:#86efac; --warn:#fca5a5;
+  --bg:#3b0a2f; --bg2:#be185d; --card:rgba(255,255,255,.12); --card-b:rgba(253,224,171,.28);
+  --txt:#fff7fb; --mut:#fbcfe8; --acc:#fcd34d; --ok:#bbf7d0; --warn:#fecaca;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;-webkit-text-size-adjust:100%}
-body{min-height:100vh;background:linear-gradient(180deg,var(--bg2) 0%,var(--bg) 60%) fixed;
+body{min-height:100vh;background:linear-gradient(170deg,#db2777 0%,#9d174d 32%,var(--bg) 85%) fixed;
   padding:calc(env(safe-area-inset-top) + 12px) 16px calc(env(safe-area-inset-bottom) + 84px)}
 header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-h1{font-size:22px;margin:0;letter-spacing:.2px}
+h1{font-size:30px;margin:0;font-family:"Snell Roundhand","Apple Chancery","Brush Script MT",cursive;font-weight:700;
+  background:linear-gradient(90deg,#fff 0%,#fde68a 50%,#fff 100%);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.1}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.35;
+  background-image:radial-gradient(circle,#fde68a 1.4px,transparent 2px),radial-gradient(circle,#fff 1px,transparent 1.6px),radial-gradient(circle,#f9a8d4 1.6px,transparent 2.2px);
+  background-size:97px 113px,61px 79px,131px 149px;background-position:0 0,23px 41px,67px 17px}
+header,section.tab,nav{position:relative;z-index:1}
+nav{position:fixed}
+.banner{text-align:center;margin:0 0 14px;padding:14px 12px;border-radius:18px;border:1px solid rgba(253,224,171,.55);
+  background:linear-gradient(135deg,rgba(255,255,255,.2),rgba(251,207,232,.12));box-shadow:0 6px 24px rgba(0,0,0,.22)}
+.banner .big{font-family:"Snell Roundhand","Apple Chancery","Brush Script MT",cursive;font-size:26px;font-weight:700;color:var(--acc);line-height:1.15}
+.banner .sm{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#fff}
+.banner .em{font-size:22px;letter-spacing:6px;margin-top:4px}
 .sub{font-size:13px;color:var(--mut)}
 .pill{font-size:12px;padding:4px 10px;border-radius:99px;background:var(--card);border:1px solid var(--card-b)}
 .pill.on{color:var(--ok)} .pill.off{color:var(--warn)}
 section.tab{display:none} section.tab.active{display:block}
-.card{background:var(--card);border:1px solid var(--card-b);border-radius:18px;padding:16px;margin-bottom:14px}
+.card{background:var(--card);border:1px solid var(--card-b);border-radius:20px;padding:16px;margin-bottom:14px;box-shadow:0 6px 22px rgba(0,0,0,.18)}
 .card h2{font-size:16px;margin:0 0 10px;display:flex;align-items:center;gap:8px}
 .card h3{font-size:14px;margin:14px 0 6px;color:var(--acc)}
 .note{font-size:12px;color:var(--mut);margin-top:8px;line-height:1.4}
@@ -35,7 +46,7 @@ section.tab{display:none} section.tab.active{display:block}
 .cur{display:grid;grid-template-columns:64px 1fr;align-items:center;gap:10px;margin-bottom:10px}
 .cur label{font-weight:700;font-size:15px}
 .cur label small{display:block;font-weight:400;color:var(--mut);font-size:11px}
-.cur input{width:100%;font-size:24px;padding:12px 14px;border-radius:14px;border:1px solid var(--card-b);background:rgba(0,0,0,.25);color:var(--txt);font-variant-numeric:tabular-nums;outline:none}
+.cur input{width:100%;font-size:24px;padding:12px 14px;border-radius:14px;border:1px solid var(--card-b);background:rgba(59,10,47,.45);color:var(--txt);font-variant-numeric:tabular-nums;outline:none}
 .cur input:focus{border-color:var(--acc)}
 table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
 td,th{padding:7px 4px;border-bottom:1px solid var(--card-b);text-align:left}
@@ -43,7 +54,7 @@ th{color:var(--mut);font-weight:600;font-size:12px}
 td:last-child,th:last-child{text-align:right}
 /* clima */
 .days{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.day{background:rgba(0,0,0,.2);border-radius:14px;padding:12px;text-align:center}
+.day{background:rgba(59,10,47,.38);border-radius:14px;padding:12px;text-align:center}
 .day .d{font-size:13px;color:var(--mut);text-transform:capitalize}
 .day .i{font-size:34px;line-height:1.2}
 .day .t{font-size:18px;font-weight:700}
@@ -54,7 +65,7 @@ ul{margin:0;padding-left:18px;line-height:1.55;font-size:14.5px}
 li{margin-bottom:6px}
 .row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--card-b);font-size:14.5px}
 .row:last-child{border-bottom:0}
-.row b{color:var(--acc);white-space:nowrap}
+.row b{color:var(--acc);text-align:right}
 .sos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .sos a{display:block;text-align:center;text-decoration:none;color:var(--txt);background:rgba(220,38,38,.35);border:1px solid rgba(252,165,165,.5);border-radius:14px;padding:12px 4px;font-size:12px}
 .sos a b{display:block;font-size:26px}
@@ -70,22 +81,29 @@ li{margin-bottom:6px}
 .flight .a{font-size:22px;color:var(--mut)}
 .pend{color:var(--mut);font-style:italic}
 /* nav */
-nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:rgba(8,47,73,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:rgba(74,10,55,.93);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   border-top:1px solid var(--card-b);padding:6px 6px calc(env(safe-area-inset-bottom) + 6px)}
 nav button{flex:1;background:none;border:0;color:var(--mut);font-size:11px;padding:6px 0;display:flex;flex-direction:column;align-items:center;gap:2px}
 nav button span{font-size:22px}
 nav button.active{color:var(--acc)}
-button.upd{background:var(--acc);color:#1c1917;border:0;border-radius:12px;padding:9px 14px;font-weight:700;font-size:13px}
+a.lnk{display:inline-block;background:linear-gradient(135deg,#fde68a,#f9a8d4);color:#500724;border-radius:12px;padding:9px 14px;font-weight:700;font-size:13px;text-decoration:none}
+button.upd{background:linear-gradient(135deg,#fde68a,#f9a8d4);color:#500724;border:0;border-radius:12px;padding:9px 14px;font-weight:700;font-size:13px}
 </style>
 </head>
 <body>
 <header>
-  <div><h1>🌴 Río de Janeiro</h1><div class="sub" id="hdrSub">Guía de viaje</div></div>
+  <div><h1>Maki en Río 🌴</h1><div class="sub" id="hdrSub">Despedida de soltera · Noviembre 2026</div></div>
   <span class="pill" id="net">…</span>
 </header>
 
 <!-- ============ INICIO ============ -->
 <section class="tab active" id="tab-inicio">
+
+  <div class="banner">
+    <div class="sm">Despedida de soltera</div>
+    <div class="big">Maki's Last Fling in Rio</div>
+    <div class="em">👰 💍 🥂 🪩</div>
+  </div>
 
   <div class="card">
     <h2>💱 Calculadora de monedas</h2>
@@ -129,20 +147,47 @@ button.upd{background:var(--acc);color:#1c1917;border:0;border-radius:12px;paddi
   </div>
 
   <div class="card">
-    <h2>🔁 Vuelta</h2>
-    <div class="pend">Pendiente: se agregará cuando tengamos los datos.</div>
+    <h2>🔁 Vuelta · LATAM LA779</h2>
+    <div class="sub">Lunes 30 nov 2026</div>
+    <div class="flight">
+      <div><div class="c">GIG</div><div class="h">12:20</div></div>
+      <div class="a">✈ ────</div>
+      <div style="text-align:right"><div class="c">SCL</div><div class="h">—</div></div>
+    </div>
+    <div class="row"><span>Llegar al aeropuerto</span><b>antes de las 9:20 (3 h antes)</b></div>
+    <div class="row"><span>Salir del apart hotel</span><b>≈ 7:45–8:00</b></div>
+    <div class="row"><span>Terminal y puerta</span><b>confirmar en pantallas</b></div>
+    <div class="note">⚠️ El check-out del apart hotel es a las 11:00, pero el vuelo sale a las 12:20 y el aeropuerto queda a 40–70 minutos. Hay que salir temprano. Pide el Uber con anticipación y avisa en recepción que saldrán antes del check-out.</div>
   </div>
 
   <div class="card">
-    <h2>🏨 Alojamiento</h2>
-    <div class="pend">Pendiente: nombre, dirección y teléfono.</div>
+    <h2>🏨 Apart Hotel Copacabana</h2>
+    <div class="row"><span>Dirección</span><b>Rua Barata Ribeiro, 370<br>Copacabana, Río de Janeiro</b></div>
+    <div class="row"><span>Llegada</span><b>Jue 26 nov, desde las 14:00</b></div>
+    <div class="row"><span>Salida</span><b>Lun 30 nov, 11:00</b></div>
+    <p style="margin:10px 0 0"><a class="lnk" href="https://maps.apple.com/?q=Rua+Barata+Ribeiro+370+Copacabana+Rio+de+Janeiro">📍 Abrir en Mapas</a></p>
+    <div class="note">Haz una captura de pantalla de las <b>«Indicaciones de acceso»</b> y los <b>«Datos del wifi»</b> de tu reserva (app de Airbnb o correo), así los tienes sin internet. El aeropuerto GIG queda a 40–70 min según tráfico; usa Uber/99 o el taxi oficial de mostrador, y confirma el precio en la app antes de subir.</div>
+  </div>
+
+  <div class="card">
+    <h2>🏖️ Tu barrio: Copacabana</h2>
+    <ul>
+      <li><b>Ubicación:</b> Barata Ribeiro es una calle comercial de mucho movimiento, a unas pocas cuadras de la playa (la primera calle es la Av. Atlântica, la segunda Av. N. S. de Copacabana y la tercera Barata Ribeiro). Confirma la distancia exacta en Mapas.</li>
+      <li><b>Metro:</b> están cerca las estaciones <b>Cardeal Arcoverde</b> y <b>Siqueira Campos</b>. En metro llegas a Ipanema (General Osório) en pocas paradas.</li>
+      <li><b>La playa por «postos»:</b> Copacabana se divide en puestos de salvavidas numerados (Posto 1 al 6). Sirve para ubicarse o encontrarse entre ustedes: «nos vemos en el Posto 5».</li>
+      <li><b>Cerca:</b> el <b>Forte de Copacabana</b> (con la Confeitaria Colombo) y el <b>Arpoador</b>, el mejor lugar para ver la puesta de sol, son paseos de Uber o de una caminata larga por la playa.</li>
+      <li><b>Compras:</b> hay supermercados, panaderías (padarias) y farmacias en casi todas las cuadras de Barata Ribeiro y N. S. de Copacabana. Varias abren hasta tarde o 24 horas.</li>
+      <li><b>Distancias en auto (según tráfico):</b> Ipanema 10–15 min, Pão de Açúcar y Urca 15–25 min, Cristo Redentor 20–30 min, Centro y Lapa 25–35 min.</li>
+      <li><b>Seguridad en el barrio:</b> es zona turística y concurrida de día. Con tu celular en la mano en la avenida, ten cuidado; de noche, evita calles laterales oscuras y la playa sola. Hay favelas en los cerros que rodean el barrio: no subas por tu cuenta.</li>
+      <li><b>Restaurantes:</b> abundan los lugares de comida por kilo, pizzerías y bares en la calle y en la Av. Atlântica. Pregunta en recepción por su favorito del barrio.</li>
+    </ul>
   </div>
 </section>
 
 <!-- ============ RÍO ============ -->
 <section class="tab" id="tab-rio">
   <div class="card">
-    <h2>🌎 Datos interesantes</h2>
+    <h2>🌎 Datos interesantes para presumir</h2>
     <ul>
       <li><b>Cristo Redentor:</b> mide 30 m (38 m con el pedestal) y está sobre el Corcovado, a 710 m. Se inauguró en 1931 y es una de las Nuevas 7 Maravillas del Mundo (2007).</li>
       <li><b>Pão de Açúcar:</b> el morro mide 396 m. Su teleférico funciona desde 1912, uno de los primeros del mundo.</li>
@@ -158,14 +203,17 @@ button.upd{background:var(--acc);color:#1c1917;border:0;border-radius:12px;paddi
   </div>
 
   <div class="card">
-    <h2>📍 Lugares clásicos</h2>
+    <h2>✨ Curiosidades</h2>
     <ul>
-      <li>Cristo Redentor (tren del Corcovado o van; reservar horario).</li>
-      <li>Pão de Açúcar (mejor al atardecer).</li>
-      <li>Playas de Copacabana, Ipanema y Arpoador.</li>
-      <li>Santa Teresa y los Arcos de Lapa, con la Escadaria Selarón.</li>
-      <li>Jardín Botánico y Parque Lage.</li>
-      <li>Centro histórico, Museo del Mañana y Boulevard Olímpico.</li>
+      <li><b>El nombre:</b> los navegantes portugueses llegaron en enero de 1502 y creyeron que la bahía de Guanabara era la desembocadura de un río. De ahí «Río de Enero».</li>
+      <li><b>El Calçadão de Copacabana:</b> el paseo con las olas de piedra blanca y negra fue diseñado por el paisajista Burle Marx en 1970.</li>
+      <li><b>Domingos sin autos:</b> la avenida frente a las playas se cierra al tráfico los domingos y feriados, y se llena de gente en bici, patines y a pie.</li>
+      <li><b>Réveillon:</b> en Año Nuevo millones de personas se juntan en Copacabana, vestidas de blanco, y saltan siete olas por la suerte.</li>
+      <li><b>Futevôlei:</b> el vóley jugado solo con pies, pecho y cabeza nació en Copacabana en 1965.</li>
+      <li><b>En la playa:</b> los vendedores pasan con agua de coco, mate helado, queso a la parrilla y el famoso Biscoito Globo.</li>
+      <li><b>Rayos:</b> el Cristo Redentor recibe varios rayos al año; el pararrayos del monumento está ahí por algo.</li>
+      <li><b>El nombre del Pão de Açúcar:</b> viene de los moldes cónicos en los que antes se vendía el azúcar refinado.</li>
+      <li><b>Açaí:</b> en Brasil se toma en bol, frío, con granola y plátano. Pruébalo.</li>
     </ul>
   </div>
 
@@ -203,11 +251,44 @@ button.upd{background:var(--acc);color:#1c1917;border:0;border-radius:12px;paddi
   </div>
 
   <div class="card">
-    <h2>🔌 Electricidad y hora</h2>
-    <div class="row"><span>Enchufe</span><b>Tipo N (también C)</b></div>
-    <div class="row"><span>Voltaje</span><b>127 V en Río (algunos lugares 220 V)</b></div>
-    <div class="row"><span>Hora</span><b>Igual que Chile (UTC-3)</b></div>
-    <div class="note">Los cargadores de celular y notebook suelen aceptar 100–240 V, solo revisa la etiqueta. Los de 2 clavijas redondas chilenas normalmente calzan; si no, lleva un adaptador universal.</div>
+    <h2>🔌 Enchufes: ¿igual que Chile?</h2>
+    <table>
+      <tr><th></th><th>Chile</th><th>Brasil</th></tr>
+      <tr><td>Enchufe</td><td>C y L</td><td>N (y algunos C)</td></tr>
+      <tr><td>Voltaje</td><td>220 V</td><td>127 V en Río*</td></tr>
+      <tr><td>Frecuencia</td><td>50 Hz</td><td>60 Hz</td></tr>
+    </table>
+    <div class="note">*Algunos hoteles o ciudades usan 220 V. Revisa el letrero junto al enchufe o pregunta en recepción.</div>
+    <h3>¿Qué significa esto?</h3>
+    <ul>
+      <li><b>No es exactamente el mismo.</b> Los enchufes chilenos de <b>2 clavijas redondas (tipo C)</b> normalmente calzan en los tomas brasileños. Los de <b>3 clavijas en línea (tipo L)</b> no calzan: necesitas adaptador.</li>
+      <li><b>Cargadores de celular, notebook y power bank:</b> sirven sin problema (aceptan 100–240 V).</li>
+      <li><b>Secador, plancha de pelo, rizador:</b> revisa la etiqueta. Si dice solo 220 V, en 127 V funcionarán muy flojos o no calentarán. Lleva uno bivoltaje (110–240 V) o usa el del hotel.</li>
+      <li>Lleva un adaptador universal; en Brasil los tomas están a veces hundidos y cuesta que calcen.</li>
+      <li><b>Hora:</b> hoy Río y Chile tienen la misma hora (UTC-3).</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>🗺️ Barrios: dónde sí, dónde con cuidado</h2>
+    <h3 style="color:#86efac">🟢 Más seguros y turísticos</h3>
+    <ul>
+      <li><b>Ipanema y Leblon:</b> los más tranquilos, con buena vida de restaurantes y playa.</li>
+      <li><b>Copacabana y Leme:</b> muy turísticos y con mucha gente. De día no hay problema; de noche, quédate en la avenida principal y la playa iluminada.</li>
+      <li><b>Lagoa y Jardim Botânico:</b> zonas residenciales tranquilas.</li>
+      <li><b>Botafogo, Flamengo y Urca:</b> seguros de día y con vista a Pão de Açúcar; de noche usa Uber.</li>
+      <li><b>Barra da Tijuca:</b> moderna y espaciosa, playas más largas y menos turistas.</li>
+    </ul>
+    <h3 style="color:#fca5a5">🔴 Con cuidado o evitar</h3>
+    <ul>
+      <li><b>Centro de la ciudad:</b> bien de día entre semana. De noche y los fines de semana queda vacío y se vuelve riesgoso.</li>
+      <li><b>Lapa:</b> divertida de noche, pero hay muchos carteristas. Ve en grupo, sin objetos de valor.</li>
+      <li><b>Santa Teresa:</b> bonita de día. De noche vuelve en Uber, no caminando.</li>
+      <li><b>Zona portuaria (Gamboa, Saúde) y calles poco iluminadas:</b> evita caminarlas de noche.</li>
+      <li><b>Favelas (Rocinha, Vidigal, Maré, Complexo do Alemão, Cidade de Deus):</b> no entres por tu cuenta. Solo con un tour oficial y de confianza.</li>
+      <li><b>Playas vacías o rincones solitarios:</b> nunca de noche.</li>
+    </ul>
+    <div class="note">Es una guía general: la situación cambia por día y por calle. Pregunta en recepción qué zonas evitar y usa Uber o 99 para los traslados de noche. La app «Fogo Cruzado» avisa de balaceras en tiempo real.</div>
   </div>
 
   <div class="card">
@@ -234,14 +315,6 @@ button.upd{background:var(--acc);color:#1c1917;border:0;border-radius:12px;paddi
     </ul>
   </div>
 
-  <div class="card">
-    <h2>📴 Antes de quedarte sin internet</h2>
-    <ul>
-      <li>Descarga el mapa de Río en Google Maps (Mapas sin conexión) mientras tengas wifi.</li>
-      <li>Guarda captura del pase de abordar, hotel y reservas.</li>
-      <li>Esta app funciona sin conexión; se actualiza sola cuando la abras con wifi o datos.</li>
-    </ul>
-  </div>
 </section>
 
 <nav>
