@@ -1,4 +1,4 @@
-const CACHE = 'rio-v1';
+const CACHE = 'rio-v2';
 const SHELL = ['./', './index.html', './manifest.webmanifest'];
 
 self.addEventListener('install', e => {
@@ -12,20 +12,26 @@ self.addEventListener('activate', e => {
   );
 });
 
-// App shell: responde desde caché al instante y actualiza en segundo plano.
-// Las APIs (clima / cambio) las maneja la propia página y guarda el resultado en localStorage.
+// Con internet: carga siempre la versión más nueva. Sin internet o muy lento (3 s): usa la copia guardada.
 self.addEventListener('fetch', e => {
   const req = e.request;
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
   if (url.origin !== location.origin) return;
-  e.respondWith(
-    caches.match(req, { ignoreSearch: true }).then(cached => {
-      const net = fetch(req).then(res => {
-        if (res && res.ok) { const copy = res.clone(); caches.open(CACHE).then(c => c.put(req, copy)); }
-        return res;
-      }).catch(() => cached || caches.match('./index.html'));
-      return cached || net;
-    })
-  );
+  e.respondWith((async () => {
+    const cache = await caches.open(CACHE);
+    const cached = await cache.match(req, { ignoreSearch: true });
+    const net = fetch(req, { cache: 'no-cache' }).then(res => {
+      if (res && res.ok) cache.put(req, res.clone());
+      return res;
+    });
+    if (!cached) return net.catch(() => cache.match('./index.html'));
+    const timeout = new Promise(r => setTimeout(() => r(null), 3000));
+    try {
+      const res = await Promise.race([net, timeout]);
+      return res || cached;
+    } catch (err) {
+      return cached;
+    }
+  })());
 });
