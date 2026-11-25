@@ -1,0 +1,10 @@
+{
+  "name": "Guía Río de Janeiro",
+  "short_name": "Río",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0c4a6e",
+  "theme_color": "#0c4a6e",
+  "lang": "es"
+}
