@@ -86,6 +86,25 @@ nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:rgba(74,10,55
 nav button{flex:1;background:none;border:0;color:var(--mut);font-size:11px;padding:6px 0;display:flex;flex-direction:column;align-items:center;gap:2px}
 nav button span{font-size:22px}
 nav button.active{color:var(--acc)}
+
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:10px;-webkit-overflow-scrolling:touch}
+.chip{flex:0 0 auto;border:1px solid var(--card-b);background:var(--card);color:var(--txt);border-radius:14px;padding:8px 12px;font-size:13px;text-align:center;min-width:62px}
+.chip b{display:block;font-size:18px}
+.chip.on{background:linear-gradient(135deg,#fde68a,#f9a8d4);color:#500724;border-color:transparent}
+.ev{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--card-b)}
+.ev:last-child{border-bottom:0}
+.ev .tm{flex:0 0 52px;font-weight:700;color:var(--acc);font-variant-numeric:tabular-nums}
+.ev .tx{flex:1;font-size:14.5px;line-height:1.35;word-break:break-word}
+.ev .tx small{display:block;color:var(--mut);font-size:12.5px;margin-top:2px}
+.ev.fx .tx{color:var(--mut)}
+.ev .ac{flex:0 0 auto;display:flex;gap:4px}
+.ev .ac button{background:rgba(255,255,255,.12);border:0;border-radius:10px;padding:6px 8px;font-size:14px;color:var(--txt)}
+.fm{display:none;margin-top:12px;padding-top:12px;border-top:1px solid var(--card-b)}
+.fm.open{display:block}
+.fm input{width:100%;font-size:16px;padding:11px 12px;border-radius:12px;border:1px solid var(--card-b);background:rgba(59,10,47,.45);color:var(--txt);margin-bottom:8px;outline:none;font-family:inherit}
+.fm input:focus{border-color:var(--acc)}
+.fm .br{display:flex;gap:8px}
+.btn2{flex:1;border:1px solid var(--card-b);background:var(--card);color:var(--txt);border-radius:12px;padding:11px;font-weight:600;font-size:14px}
 a.lnk{display:inline-block;background:linear-gradient(135deg,#fde68a,#f9a8d4);color:#500724;border-radius:12px;padding:9px 14px;font-weight:700;font-size:13px;text-decoration:none}
 button.upd{background:linear-gradient(135deg,#fde68a,#f9a8d4);color:#500724;border:0;border-radius:12px;padding:9px 14px;font-weight:700;font-size:13px}
 </style>
@@ -135,7 +154,7 @@ button.upd{background:linear-gradient(135deg,#fde68a,#f9a8d4);color:#500724;bord
     <div class="sub">Jueves 26 nov 2026</div>
     <div class="flight">
       <div><div class="c">SCL</div><div class="h">12:35</div></div>
-      <div class="a">✈ ────</div>
+      <div class="a" style="text-align:center">✈ ────<div style="font-size:13px;color:var(--acc);margin-top:2px">4 h 15 min</div></div>
       <div style="text-align:right"><div class="c">GIG</div><div class="h">16:50</div></div>
     </div>
     <div class="row"><span>Embarque</span><b>11:45 (cierra 12:05)</b></div>
@@ -143,7 +162,7 @@ button.upd{background:linear-gradient(135deg,#fde68a,#f9a8d4);color:#500724;bord
     <div class="row"><span>Asiento</span><b>27C · Economy</b></div>
     <div class="row"><span>Grupo de embarque</span><b>6</b></div>
     <div class="row"><span>Equipaje</span><b>Solo 1 bolso bajo el asiento (45×35×20 cm)</b></div>
-    <div class="note">Los horarios son locales. Hoy Chile y Río tienen la misma hora, así que no hay que cambiar el reloj. El código de reserva y el pase de abordar están en la app de LATAM / Wallet.</div>
+    <div class="note">Duración del vuelo de ida: 4 h 15 min (Chile y Río tienen hoy la misma hora, así que no hay que cambiar el reloj). Los horarios son locales. El código de reserva y el pase de abordar están en la app de LATAM / Wallet.</div>
   </div>
 
   <div class="card">
@@ -151,9 +170,10 @@ button.upd{background:linear-gradient(135deg,#fde68a,#f9a8d4);color:#500724;bord
     <div class="sub">Lunes 30 nov 2026</div>
     <div class="flight">
       <div><div class="c">GIG</div><div class="h">12:20</div></div>
-      <div class="a">✈ ────</div>
-      <div style="text-align:right"><div class="c">SCL</div><div class="h">—</div></div>
+      <div class="a" style="text-align:center">✈ ────<div style="font-size:13px;color:var(--acc);margin-top:2px">4 h 40 min</div></div>
+      <div style="text-align:right"><div class="c">SCL</div><div class="h">≈ 17:00</div></div>
     </div>
+    <div class="row"><span>Duración</span><b>≈ 4 h 40 min (llegada ≈ 17:00; confirmar en la app de LATAM)</b></div>
     <div class="row"><span>Llegar al aeropuerto</span><b>antes de las 9:20 (3 h antes)</b></div>
     <div class="row"><span>Salir del apart hotel</span><b>≈ 7:45–8:00</b></div>
     <div class="row"><span>Terminal y puerta</span><b>confirmar en pantallas</b></div>
@@ -181,6 +201,26 @@ button.upd{background:linear-gradient(135deg,#fde68a,#f9a8d4);color:#500724;bord
       <li><b>Seguridad en el barrio:</b> es zona turística y concurrida de día. Con tu celular en la mano en la avenida, ten cuidado; de noche, evita calles laterales oscuras y la playa sola. Hay favelas en los cerros que rodean el barrio: no subas por tu cuenta.</li>
       <li><b>Restaurantes:</b> abundan los lugares de comida por kilo, pizzerías y bares en la calle y en la Av. Atlântica. Pregunta en recepción por su favorito del barrio.</li>
     </ul>
+  </div>
+</section>
+
+<!-- ============ AGENDA ============ -->
+<section class="tab" id="tab-agenda">
+  <div class="card">
+    <h2>📅 Agenda del viaje</h2>
+    <div class="chips" id="dayChips"></div>
+    <div id="evList"></div>
+    <div style="display:flex;gap:8px;margin-top:12px">
+      <button class="upd" id="btnAdd" style="flex:1">➕ Agregar actividad</button>
+      <button class="btn2" id="btnShare" style="flex:0 0 auto">📤 Compartir</button>
+    </div>
+    <div class="fm" id="evForm">
+      <input type="time" id="evTime">
+      <input type="text" id="evTitle" placeholder="Qué vamos a hacer (ej. Cristo Redentor)" maxlength="80">
+      <input type="text" id="evNote" placeholder="Nota (opcional: lugar, reserva, quién va…)" maxlength="120">
+      <div class="br"><button class="upd" id="evSave" style="flex:1">Guardar</button><button class="btn2" id="evCancel">Cancelar</button></div>
+    </div>
+    <div class="note">Lo que agregues se guarda <b>solo en este teléfono</b>, sin internet. Para que todas tengan lo mismo, usa <b>📤 Compartir</b> y envíalo por WhatsApp; las demás lo copian en su agenda.</div>
   </div>
 </section>
 
@@ -227,6 +267,7 @@ button.upd{background:linear-gradient(135deg,#fde68a,#f9a8d4);color:#500724;bord
       <div><div class="pt">De nada</div><div class="es">De nada</div></div>
       <div><div class="pt">Bom dia · Boa tarde · Boa noite</div><div class="es">Buenas (mañana · tarde · noche)</div><div class="pr">«bom dí-a» · «bóa tár-di» · «bóa nói-ti»</div></div>
       <div><div class="pt">Quanto custa?</div><div class="es">¿Cuánto vale?</div><div class="pr">«cuán-tu cús-ta»</div></div>
+      <div><div class="pt">Onde fica o banheiro?</div><div class="es">¿Dónde está el baño?</div><div class="pr">«ón-di fi-ca u ba-ñéi-ru»</div></div>
       <div><div class="pt">Faz um desconto?</div><div class="es">¿Me haces descuento?</div><div class="pr">«fas um des-cón-tu»</div></div>
     </div>
     <div class="note">La «r» inicial suena como «j» (Rio ≈ «jío»), y «de» y «te» suelen sonar «dyi» y «tchi». Con gestos y buena onda se entienden sin problema.</div>
@@ -332,6 +373,7 @@ button.upd{background:linear-gradient(135deg,#fde68a,#f9a8d4);color:#500724;bord
 <nav>
   <button class="active" data-tab="inicio"><span>🏠</span>Inicio</button>
   <button data-tab="viaje"><span>✈️</span>Viaje</button>
+  <button data-tab="agenda"><span>📅</span>Agenda</button>
   <button data-tab="rio"><span>🌴</span>Río</button>
   <button data-tab="util"><span>🧰</span>Útil</button>
 </nav>
@@ -492,6 +534,70 @@ document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) refresh
 
 /* ---------- inicio ---------- */
 renderRates(); renderWx(); refreshAll();
+
+/* ---------- agenda ---------- */
+const DAYS = [['2026-11-26','Jue','26'],['2026-11-27','Vie','27'],['2026-11-28','Sáb','28'],['2026-11-29','Dom','29'],['2026-11-30','Lun','30']];
+const FIXED = {
+  '2026-11-26':[['11:45','✈️ Embarque vuelo LA780 (Terminal 2, SCL)'],['12:35','✈️ Sale el vuelo LA780 (SCL → GIG)'],['14:00','🏨 Check-in desde esta hora (Apart Hotel Copacabana)'],['16:50','✈️ Llegada a Río (GIG)']],
+  '2026-11-30':[['07:45','⏰ Salir del apart hotel hacia el aeropuerto'],['09:20','✈️ Llegar al aeropuerto GIG (3 h antes)'],['11:00','🏨 Check-out del apart hotel'],['12:20','✈️ Sale el vuelo LA779 (GIG → SCL)'],['17:00','✈️ Llegada a Santiago (aprox., confirmar en la app)']]
+};
+let agenda = LS.get('agenda') || [];
+let selDay = (()=>{ const t=new Date(); const k=t.getFullYear()+'-'+String(t.getMonth()+1).padStart(2,'0')+'-'+String(t.getDate()).padStart(2,'0'); return DAYS.some(d=>d[0]===k)?k:DAYS[0][0]; })();
+let editId = null;
+const esc = s => String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function dayItems(day){
+  const fx = (FIXED[day]||[]).map(([t,x])=>({time:t,title:x,fixed:true}));
+  const cu = agenda.filter(e=>e.date===day).map(e=>({...e,fixed:false}));
+  return fx.concat(cu).sort((a,b)=>(a.time||'99:99').localeCompare(b.time||'99:99'));
+}
+function renderAgenda(){
+  $('dayChips').innerHTML = DAYS.map(d=>`<button class="chip ${d[0]===selDay?'on':''}" data-d="${d[0]}">${d[1]}<b>${d[2]}</b></button>`).join('');
+  document.querySelectorAll('#dayChips .chip').forEach(b=>b.onclick=()=>{selDay=b.dataset.d; closeForm(); renderAgenda();});
+  const items = dayItems(selDay);
+  $('evList').innerHTML = items.length ? items.map(e=>`
+    <div class="ev ${e.fixed?'fx':''}">
+      <div class="tm">${esc(e.time||'')}</div>
+      <div class="tx">${e.fixed?esc(e.title):esc(e.title)}${e.note?`<small>${esc(e.note)}</small>`:''}</div>
+      ${e.fixed?'':`<div class="ac"><button data-e="${e.id}" aria-label="Editar">✏️</button><button data-x="${e.id}" aria-label="Borrar">🗑️</button></div>`}
+    </div>`).join('') : '<div class="note">Nada planeado todavía para este día. ¡Agrega la primera actividad!</div>';
+  document.querySelectorAll('#evList [data-e]').forEach(b=>b.onclick=()=>openForm(b.dataset.e));
+  document.querySelectorAll('#evList [data-x]').forEach(b=>b.onclick=()=>{ if(confirm('¿Borrar esta actividad?')){ agenda=agenda.filter(e=>String(e.id)!==b.dataset.x); LS.set('agenda',agenda); renderAgenda(); } });
+}
+function openForm(id){
+  editId = id || null;
+  const e = id ? agenda.find(x=>String(x.id)===String(id)) : null;
+  $('evTime').value = e ? (e.time||'') : '';
+  $('evTitle').value = e ? e.title : '';
+  $('evNote').value = e ? (e.note||'') : '';
+  $('evForm').classList.add('open');
+  $('evTitle').focus();
+}
+function closeForm(){ editId=null; $('evForm').classList.remove('open'); }
+$('btnAdd').onclick = ()=>openForm();
+$('evCancel').onclick = closeForm;
+$('evSave').onclick = ()=>{
+  const title = $('evTitle').value.trim();
+  if (!title){ $('evTitle').focus(); return; }
+  const rec = { date: selDay, time: $('evTime').value, title, note: $('evNote').value.trim() };
+  if (editId){ const i = agenda.findIndex(x=>String(x.id)===String(editId)); if(i>=0) agenda[i] = {...agenda[i], ...rec}; }
+  else agenda.push({ id: Date.now(), ...rec });
+  LS.set('agenda', agenda); closeForm(); renderAgenda();
+};
+$('btnShare').onclick = async ()=>{
+  const lines = ['📅 Agenda Maki en Río'];
+  DAYS.forEach(d=>{
+    const it = dayItems(d[0]);
+    if (!it.length) return;
+    lines.push('', `${d[1]} ${d[2]} nov`);
+    it.forEach(e=>lines.push(`${e.time||'--:--'}  ${e.title}${e.note?' ('+e.note+')':''}`));
+  });
+  const text = lines.join('\n');
+  try{
+    if (navigator.share){ await navigator.share({ text }); return; }
+    await navigator.clipboard.writeText(text); alert('Agenda copiada. Pégala en WhatsApp.');
+  }catch(e){}
+};
+renderAgenda();
 
 /* ---------- service worker ---------- */
 if ('serviceWorker' in navigator){
